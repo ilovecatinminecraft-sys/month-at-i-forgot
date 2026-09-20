@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Veriy — Simple Calendar</title>
+<meta name="description" content="A little space for your plans. Add events to a simple monthly calendar in seconds.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232c5546'/%3E%3Cpath d='M7 8h5l4 12 4-12h5l-7 17h-4z' fill='%23dceba7'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"><script src="app.js" defer></script><script src="sharing.js" defer></script>
+</head>
+<body>
+<header class="brandbar"><a class="brand" href="./" aria-label="Veriy home"><span class="brandmark">v</span>veriy<span class="brand-dot">.</span></a><button id="theme" class="theme-toggle" type="button" aria-pressed="false">Dark mode</button></header>
+<main>
+<div class="intro"><div><p class="eyebrow">YOUR TIME, AT A GLANCE</p><h1>Make room for life.</h1></div><div class="intro-actions"><button class="theme-toggle" id="share">Share calendar</button><button class="primary" id="add"><span aria-hidden="true">＋</span> Add event</button></div></div>
+<section class="calendar" aria-label="Monthly calendar">
+<div class="toolbar"><div class="month-heading"><h2 id="month"></h2><label class="year-label" for="year">Year<input id="year" type="number" min="100" max="9999" step="1" aria-label="Calendar year"></label></div><div class="navigation"><button id="today">Today</button><div class="arrows"><button id="previous" aria-label="Previous month">‹</button><button id="next" aria-label="Next month">›</button></div></div></div>
+<div class="weekdays" aria-hidden="true"><span>MON<span>DAY</span></span><span>TUE<span>SDAY</span></span><span>WED<span>NESDAY</span></span><span>THU<span>RSDAY</span></span><span>FRI<span>DAY</span></span><span>SAT<span>URDAY</span></span><span>SUN<span>DAY</span></span></div>
+<div class="grid" id="grid"></div>
+<footer class="calendar-footer"><span><i></i> Today</span><a class="holiday-source" href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/" target="_blank" rel="noopener">U.S. federal holidays</a><span id="count"></span></footer>
+</section>
+<div class="bottomnote"><span>Click any day to make a plan.</span><span>Just your plans. Saved on this browser.</span></div>
+<p class="status" id="status" role="status" aria-live="polite"></p>
+</main>
+<dialog id="dialog"><form id="form"><div class="dialog-top"><p class="eyebrow">MAKE A LITTLE PLAN</p><button type="button" class="close" id="close" aria-label="Close">×</button></div><h2 id="form-title">Add an event</h2><label for="name">Event name</label><input id="name" name="name" placeholder="What’s the plan?" maxlength="100" required autocomplete="off"><div class="form-row"><div><label for="date">Date</label><input id="date" name="date" type="date" min="0100-01-01" max="9999-12-31" required></div><div><label for="time">Time</label><input id="time" name="time" type="time" required></div></div><div class="form-actions"><button type="button" class="delete" id="delete" hidden>Delete event</button><button class="primary" type="submit">Save event <span aria-hidden="true">↗</span></button></div></form></dialog>
+<dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-top"><p class="eyebrow">SHARE ON YOUR TERMS</p><button class="close" id="share-close" aria-label="Close sharing">×</button></div><h2 id="share-title">Share your calendar</h2><label for="owner">Calendar name</label><input id="owner" value="Grubby" maxlength="60"><p class="share-help">Choose what people see for each event. Personal blocks the entire day without sharing the event name or time. Hide leaves it out entirely.</p><div id="share-events"></div><h3>What Brandon will see</h3><div id="share-preview"></div><p class="share-help">This link is a snapshot. Create a new link after changing plans. Anyone with the link can view it; old links cannot be revoked.</p><button class="primary" id="make-link">Create sharing link</button><div id="link-result" hidden><label for="share-url">Read-only calendar link</label><textarea id="share-url" readonly rows="3"></textarea><div class="intro-actions"><button class="theme-toggle" id="copy-link">Copy link</button><a id="preview-link" target="_blank" rel="noopener">Open shared view</a></div></div><p id="share-status" role="status"></p></dialog></body></html>
+
+
+
+
