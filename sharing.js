@@ -39,11 +39,12 @@ $('owner').oninput=refreshShare;$('share-close').onclick=()=>$('share-dialog').c
 $('make-link').onclick=()=>{
  const payload={v:1,owner:$('owner').value.trim(),month:dateKey(view),events:publicEvents(events,choices)};
  if(payload.events.length>500){$('share-status').textContent='Choose fewer than 501 events for this snapshot.';return;}
- const url=new URL(location.href);url.hash='share='+encodeShare(payload);url.search='';
+ const url=new URL('https://ilovecatinminecraft-sys.github.io/month-at-i-forgot/');url.hash='share='+encodeShare(payload);url.search='';
  if(url.href.length>16000){$('share-status').textContent='This calendar is too large for one link. Hide some events and try again.';return;}
  $('share-url').value=url.href;$('preview-link').href=url.href;$('link-result').hidden=false;
- $('share-status').textContent=['localhost','127.0.0.1','::1','[::1]'].includes(location.hostname)||location.protocol==='file:'?'Preview link only: this site must be published at a shared web address before Brandon can open it on another device.':'Link ready. Only the details shown in the preview are included.';
+ $('share-status').textContent=['localhost','127.0.0.1','::1','[::1]'].includes(url.hostname)||url.protocol==='file:'?'Preview link only: this site must be published at a shared web address before Brandon can open it on another device.':'Link ready. Only the details shown in the preview are included.';
 };
 $('copy-link').onclick=async()=>{try{await navigator.clipboard.writeText($('share-url').value);$('share-status').textContent='Link copied.';}catch{$('share-url').focus();$('share-url').select();$('share-status').textContent='Select and copy the link above.';}};
 window.addEventListener('hashchange',()=>location.reload());
 render();
+
